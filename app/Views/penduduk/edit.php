@@ -5,14 +5,14 @@
                 <h5 class="modal-title" id="modalLabel"><?= $title; ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body ">
-                <div class="border rounded p-3">
+            <form data-id="<?= $penduduk['id']; ?>" action="<?= $meta['url']; ?>" method="" id="formTambah" onsubmit="update(event)">
+                <div class="modal-body">
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Nama Penduduk</label>
+                            <label class="form-label">NIK</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['nama_penduduk']; ?></p>
+                            <input value="<?= $penduduk['nik'] ?>" name="nik" type="text" class="form-control" required>
                         </div>
                     </div>
 
@@ -21,18 +21,19 @@
                             <label class="form-label">NIK</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['nik']; ?></p>
+                            <input value="<?= $penduduk['no_kk'] ?>" name="no_kk" type="text" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">No. KK</label>
+                            <label class="form-label">Nama Lengkap</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['no_kk']; ?></p>
+                            <input value="<?= $penduduk['nama_penduduk'] ?>" name="nama_penduduk" type="text" class="form-control" required>
                         </div>
                     </div>
+
 
 
                     <div class="row mb-2">
@@ -40,61 +41,40 @@
                             <label class="form-label">Jenis Kelamin</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['jenis_kelamin']; ?></p>
+                            <select class="form-control" name="jenis_kelamin" id="" required>
+                                <optio value="">Pilih Jenis Kelamin</option>
+                                    <option <?= ($penduduk['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?> value="Laki-Laki">Laki-Laki</option>
+                                    <option <?= ($penduduk['jenis_kelamin'] == 'Laki-Laki') ? 'selected' : '' ?> value="Perempuan">Perempuan</option>
+                            </select>
                         </div>
                     </div>
-                    <hr>
-
 
                     <div class="row mb-2">
                         <div class="col-md-4">
                             <label class="form-label">RT</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['rt']; ?></p>
+                            <input value="<?= $penduduk['rt'] ?>" name="rt" type="text" class="form-control" required>
                         </div>
                     </div>
+
 
                     <div class="row mb-2">
                         <div class="col-md-4">
                             <label class="form-label">RW</label>
                         </div>
                         <div class="col-md-8">
-                            <p><?= $peserta['rw']; ?></p>
+                            <input value="<?= $penduduk['rw'] ?>" name="rw" type="text" class="form-control" required>
                         </div>
                     </div>
 
-                </div>
-                <hr>
-                <h5>Data Kriteria</h5>
-                <div class="border rounded p-3">
 
-                    <?php foreach ($dataKriteria as $dt) : ?>
-                        <div class="row mb-2">
-                            <div class="col-md-4">
-                                <label class="form-label"><?= $dt['keterangan'] . ' - ' . $dt['kriteria']; ?></label>
-                            </div>
-
-                            <div class="col-md-8">
-                                <?php
-                                $k = 'k_' . $dt['id'];
-                                foreach ($dataSubkriteria as $sk) :
-                                    if ($dt['id'] == $sk['id_kriteria']) {
-                                        if (isset($peserta[$k])) {
-                                            echo ($peserta[$k] == $sk['id']) ? '<p>' . $sk['subkriteria'] . '</p>' : false;
-                                        } else {
-                                            'Data Belum Lengkap';
-                                        }
-                                    }
-                                endforeach; ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

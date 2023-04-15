@@ -33,10 +33,10 @@
                             <tr class="align-middle">
                                 <th class="text-center">Rangking</th>
                                 <th>NISN</td>
-                                <th>Nama Lengkap</th>
+                                <th>Nama Penduduk</th>
                                 <th>Jenis Kelamin</td>
-                                <th>Alamat</td>
-                                <th>Nilai Akhir</td>
+                                <th>RT</td>
+                                <th>RW</td>
                                 <th>Status Layak</th>
                             </tr>
                         </thead>
@@ -47,11 +47,11 @@
                             ?>
                                 <tr>
                                     <td class="text-center"><?= $rank++; ?></td>
-                                    <td><?= $ps['nisn'] ?></td>
-                                    <td><?= $ps['nama_lengkap'] ?></td>
+                                    <td><?= $ps['nik'] ?></td>
+                                    <td><?= $ps['nama_penduduk'] ?></td>
                                     <td><?= $ps['jenis_kelamin'] ?></td>
-                                    <td><?= $ps['alamat'] ?></td>
-                                    <td><?= $ps['kriteria_nilai']; ?></td>
+                                    <td><?= $ps['rt'] ?></td>
+                                    <td><?= $ps['rw']; ?></td>
                                     <th><?= @$ps['status_layak']; ?></th>
                                 </tr>
                             <?php endforeach; ?>

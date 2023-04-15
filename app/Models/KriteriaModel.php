@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class KriteriaModel extends Model {
+class KriteriaModel extends Model
+{
     protected $DBGroup          = 'default';
     protected $table            = 'kriteria';
     protected $primaryKey       = 'id';

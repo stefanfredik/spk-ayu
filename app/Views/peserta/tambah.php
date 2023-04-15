@@ -14,10 +14,10 @@
 
 
                         <div class="col-md-8">
-                            <select class="form-control" name="id_siswa" id="" required>
-                                <option value="">Pilih Siswa</option>
-                                <?php foreach ($dataSiswa as $dt) : ?>
-                                    <option value="<?= $dt['id']; ?>"><?= $dt['nama_lengkap']; ?></option>
+                            <select class="form-control" name="id_penduduk" id="" required>
+                                <option value="">Pilih Penduduk</option>
+                                <?php foreach ($dataPenduduk as $dt) : ?>
+                                    <option value="<?= $dt['id']; ?>"><?= $dt['nama_penduduk']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

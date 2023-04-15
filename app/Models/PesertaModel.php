@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PesertaModel extends Model {
+class PesertaModel extends Model
+{
     protected $DBGroup          = 'default';
     protected $table            = 'peserta';
     protected $primaryKey       = 'id';
@@ -13,20 +14,22 @@ class PesertaModel extends Model {
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = false;
-    protected $allowedFields    = ['id', 'id_siswa'];
+    protected $allowedFields    = ['id', 'id_penduduk'];
 
-    public function findAllPeserta() {
-        $this->select('siswa.*');
+    public function findAllPeserta()
+    {
+        $this->select('datapenduduk.*');
         $this->select('peserta.*');
-        $this->join('siswa', 'siswa.id = peserta.id_siswa');
+        $this->join('datapenduduk', 'datapenduduk.id = peserta.id_penduduk ');
         return $this->findAll();
     }
 
-    public function findPeserta($id) {
+    public function findPeserta($id)
+    {
         $this->select('peserta.id as id_peserta');
-        $this->select('siswa.*');
+        $this->select('datapenduduk*');
         $this->select('peserta.*');
-        $this->join('siswa', 'siswa.id = peserta.id_siswa');
+        $this->join('datapenduduk', 'datapenduduk.id = peserta.id_penduduk');
         return $this->find($id);
     }
 }

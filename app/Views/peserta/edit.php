@@ -14,9 +14,9 @@
                         </div>
                         <div class="col-md-8">
                             <select class="form-control" name="id_penduduk" id="" required disabled>
-                                <option value="">Pilih Siswa</option>
-                                <?php foreach ($dataSiswa as $dt) : ?>
-                                    <option <?= ($peserta['id_siswa'] == $dt['id']) ? 'selected' : '' ?> value="<?= $dt['id']; ?>"><?= $dt['nama_lengkap']; ?></option>
+                                <option value="">Pilih Penduduk</option>
+                                <?php foreach ($dataPenduduk as $dt) : ?>
+                                    <option <?= ($peserta['id_penduduk'] == $dt['id']) ? 'selected' : '' ?> value="<?= $dt['id']; ?>"><?= $dt['nama_penduduk']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

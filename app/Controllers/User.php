@@ -7,7 +7,8 @@ use App\Models\Users;
 use CodeIgniter\API\ResponseTrait;
 use Myth\Auth\Password;
 
-class User extends BaseController {
+class User extends BaseController
+{
     use ResponseTrait;
 
     var $meta = [
@@ -18,11 +19,13 @@ class User extends BaseController {
 
 
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->userModel = new Users();
     }
 
-    public function index() {
+    public function index()
+    {
 
         $data = [
             'meta' => $this->meta,
@@ -33,7 +36,8 @@ class User extends BaseController {
         return view("user/index", $data);
     }
 
-    public function tambah() {
+    public function tambah()
+    {
         $data = [
             'title' => 'Tambah Data User',
             'url'   => $this->meta['url']
@@ -42,7 +46,8 @@ class User extends BaseController {
         return view('/user/tambah', $data);
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $data = [
             'title' => 'Edit Data User',
             'user'  => $this->userModel->find($id),
@@ -53,7 +58,8 @@ class User extends BaseController {
         return $this->respond(view('/user/edit', $data), 200);
     }
 
-    public function table() {
+    public function table()
+    {
         $data = [
             'title' => 'Data User',
             'url'   => $this->meta['url'],
@@ -63,7 +69,8 @@ class User extends BaseController {
         return view('/user/table', $data);
     }
 
-    public function store() {
+    public function store()
+    {
         $rules = [
             'username'  => [
                 'rules'  => 'required|is_unique[users.username]',
@@ -113,7 +120,8 @@ class User extends BaseController {
     }
 
 
-    public function update($id) {
+    public function update($id)
+    {
         $data = $this->request->getPost();
 
         $this->userModel->update($id, $data);
@@ -130,7 +138,8 @@ class User extends BaseController {
 
 
 
-    public function delete($id) {
+    public function delete($id)
+    {
 
         $this->userModel->delete($id);
 

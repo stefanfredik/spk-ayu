@@ -78,18 +78,18 @@ $routes->group('subkriteria', static function ($router) {
 
 
 
-$routes->group('datasiswa', static function ($router) {
-    $router->get('/', 'Datasiswa::index');
-    $router->get('table', 'Datasiswa::table');
-    $router->get('tambah', 'Datasiswa::tambah');
-    $router->get('(:num)', 'Datasiswa::edit/$1');
-    $router->get('detail/(:num)', 'Datasiswa::detail/$1');
-    $router->get('delete/(:num)', 'Datasiswa::delete/$1');
+$routes->group('datapenduduk', static function ($router) {
+    $router->get('/', 'Datapenduduk::index');
+    $router->get('table', 'Datapenduduk::table');
+    $router->get('tambah', 'Datapenduduk::tambah');
+    $router->get('(:num)', 'Datapenduduk::edit/$1');
+    $router->get('detail/(:num)', 'Datapenduduk::detail/$1');
+    $router->get('delete/(:num)', 'Datapenduduk::delete/$1');
 
-    $router->post('/', 'Datasiswa::store');
-    $router->post("(:num)", "Datasiswa::update/$1");
+    $router->post('/', 'Datapenduduk::store');
+    $router->post("(:num)", "Datapenduduk::update/$1");
 
-    $router->delete("(:num)", "Datasiswa::delete/$1");
+    $router->delete("(:num)", "Datapenduduk::delete/$1");
 });
 
 

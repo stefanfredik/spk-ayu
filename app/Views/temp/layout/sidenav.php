@@ -31,9 +31,9 @@
             </a>
 
 
-            <a class="nav-link" href="/datasiswa">
+            <a class="nav-link" href="/datapenduduk">
                 <div class="nav-link-icon"><i data-feather="layers"></i></div>
-                Data Siswa
+                Data Penduduk
             </a>
             <hr class="hr">
 

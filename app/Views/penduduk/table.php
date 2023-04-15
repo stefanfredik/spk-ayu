@@ -3,28 +3,27 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>NISN</th>
-                <th>Nama Lengkap</th>
-                <th>Tempat Lahir</th>
-                <th>Tanggal Lahir</th>
+                <th>NIK</th>
+                <th>No. KK</th>
+                <th>Nama Penduduk</th>
                 <th>Jenis Kelamin</th>
-                <th>Kelas</th>
-
+                <th>RT</th>
+                <th>RW</th>
                 <th>Opsi</th>
             </tr>
         </thead>
 
         <tbody>
             <?php $no = 1;
-            foreach ($dataSiswa as $dt) : ?>
+            foreach ($dataPenduduk as $dt) : ?>
                 <tr>
                     <td><?= $no++ ?></td>
-                    <td><?= $dt['nisn'] ?></td>
-                    <td><?= $dt['nama_lengkap'] ?></td>
-                    <td><?= $dt['tempat_lahir'] ?></td>
-                    <td><?= $dt['tanggal_lahir'] ?></td>
+                    <td><?= $dt['nik'] ?></td>
+                    <td><?= $dt['no_kk'] ?></td>
+                    <td><?= $dt['nama_penduduk'] ?></td>
                     <td><?= $dt['jenis_kelamin'] ?></td>
-                    <td><?= $dt['kelas'] ?></td>
+                    <td><?= $dt['rt'] ?></td>
+                    <td><?= $dt['rw'] ?></td>
 
                     <td style="text-align: center" width="120px">
                         <div class="btn-group" role="group" aria-label="Basic example">

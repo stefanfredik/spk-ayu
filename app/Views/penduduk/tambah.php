@@ -9,41 +9,30 @@
                 <div class="modal-body">
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">NISN</label>
+                            <label class="form-label">NIK</label>
                         </div>
                         <div class="col-md-8">
-                            <input name="nisn" type="text" class="form-control" required>
+                            <input name="nik" type="text" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Nama Lengkap</label>
+                            <label class="form-label">No. KK</label>
                         </div>
                         <div class="col-md-8">
-                            <input name="nama_lengkap" type="text" class="form-control" required>
+                            <input name="no_kk" type="text" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Tempat Lahir</label>
+                            <label class="form-label">Nama Penduduk</label>
                         </div>
                         <div class="col-md-8">
-                            <input name="tempat_lahir" type="text" class="form-control" required>
+                            <input name="nama_penduduk" type="text" class="form-control" required>
                         </div>
                     </div>
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label">Tanggal Lahir</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input name="tanggal_lahir" type="date" class="form-control" required>
-                        </div>
-                    </div>
-
-
 
                     <div class="row mb-2">
                         <div class="col-md-4">
@@ -60,51 +49,21 @@
 
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Kelas</label>
+                            <label class="form-label">RT</label>
                         </div>
                         <div class="col-md-8">
-                            <input name="kelas" type="text" class="form-control" required>
+                            <input name="rt" type="text" class="form-control" required>
                         </div>
                     </div>
 
 
 
-                    <hr>
-                    <h4>Data Orang Tua</h4>
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Nama Orang Tua</label>
+                            <label class="form-label">RW</label>
                         </div>
                         <div class="col-md-8">
-                            <input name="nama_orangtua" type="text" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label">Jumlah Tanggungan</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input name="jumlah_tanggungan" type="text" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label">Alamat</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input name="alamat" type="text" class="form-control" required>
-                        </div>
-                    </div>
-
-
-                    <div class="row mb-2">
-                        <div class="col-md-4">
-                            <label class="form-label">Telepon</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input name="telepon" type="text" class="form-control" required>
+                            <input name="rw" type="text" class="form-control" required>
                         </div>
                     </div>
 
