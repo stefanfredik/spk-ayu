@@ -32,7 +32,8 @@
                         <thead>
                             <tr class="align-middle">
                                 <th class="text-center">Rangking</th>
-                                <th>NISN</td>
+                                <th>NIK</td>
+                                <th>No. KK</td>
                                 <th>Nama Penduduk</th>
                                 <th>Jenis Kelamin</td>
                                 <th>RT</td>
