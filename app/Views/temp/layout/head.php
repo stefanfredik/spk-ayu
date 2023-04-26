@@ -10,5 +10,6 @@
     <?= $this->extend("temp/layout/sbstyles"); ?>
 
 
+    <?= $this->include("temp/layout/customcss"); ?>
     <?= $this->renderSection("styles"); ?>
 </head>

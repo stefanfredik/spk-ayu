@@ -27,7 +27,6 @@
                                 "RW : " . $dt['rw']; ?></td>
                         <td>1</td>
                     </tr>
-
                 <?php endif; ?>
             <?php endforeach; ?>
         </tbody>

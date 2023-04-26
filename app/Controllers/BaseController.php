@@ -19,7 +19,8 @@ use Psr\Log\LoggerInterface;
  *
  * For security be sure to declare any new methods as protected or private.
  */
-abstract class BaseController extends Controller {
+abstract class BaseController extends Controller
+{
     /**
      * Instance of the main Request object.
      *
@@ -34,7 +35,7 @@ abstract class BaseController extends Controller {
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['auth'];
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -45,7 +46,8 @@ abstract class BaseController extends Controller {
     /**
      * Constructor.
      */
-    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger) {
+    public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
+    {
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
