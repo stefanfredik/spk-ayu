@@ -4,7 +4,7 @@
 
     <div class="card card-icon mb-4">
         <div class="row g-0">
-            <div class="col-auto card-icon-aside bg-primary"><i class="me-1 text-white-50" data-feather="users"></i></div>
+            <div class="col-auto card-icon-aside bg-green"><i class="me-1 text-white-50" data-feather="users"></i></div>
             <div class="col">
                 <div class="card-body py-5">
                     <h5 class="card-title"><?= $title; ?></h5>
@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    <button data-url="<?= '/' . $meta['url'] . '/tambah'; ?>" class="m-2 btn btn-outline-primary" onclick="add(this)"><i class="bi bi-plus-circle mx-1"></i>Tambah Data</button>
+    <button data-url="<?= '/' . $meta['url'] . '/tambah'; ?>" class="my-2 btn btn-green" onclick="add(this)"><i class="bi bi-plus-circle mx-1"></i>Tambah Data</button>
     <div class="card mb-4">
-        <div class="card-header">Table User</div>
+        <div class="card-header bg-green text-white">Table User</div>
         <div id="data" class="card-body">
 
         </div>
