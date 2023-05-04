@@ -85,9 +85,11 @@ $routes->group('datapenduduk', static function ($router) {
     $router->get('(:num)', 'Datapenduduk::edit/$1');
     $router->get('detail/(:num)', 'Datapenduduk::detail/$1');
     $router->get('delete/(:num)', 'Datapenduduk::delete/$1');
+    $router->get('upload', 'Datapenduduk::upload');
 
     $router->post('/', 'Datapenduduk::store');
     $router->post("(:num)", "Datapenduduk::update/$1");
+    $router->post('upload', 'Datapenduduk::doupload');
 
     $router->delete("(:num)", "Datapenduduk::delete/$1");
 });
@@ -137,9 +139,12 @@ $routes->group('user', static function ($router) {
 });
 
 
+$routes->group('perhitungan', static function ($router) {
+    $router->get('/', 'Perhitungan::index');
+    $router->get('vectors', 'Perhitungan::vectorS');
+    $router->get('vectorv', 'Perhitungan::vectorV');
+});
 
-
-$routes->get("perhitungan", 'Perhitungan::index');
 $routes->get("keputusan", 'Keputusan::index');
 $routes->get("laporan", 'Laporan::index');
 

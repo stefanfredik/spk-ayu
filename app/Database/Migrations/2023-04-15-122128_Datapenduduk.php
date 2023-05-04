@@ -22,7 +22,7 @@ class Datapenduduk extends Migration
             ],
             'no_kk' => [
                 'type' => 'VARCHAR',
-                'constraint' => 32
+                'constraint' => 32,
             ],
 
             'nama_penduduk' => [
@@ -31,19 +31,18 @@ class Datapenduduk extends Migration
             ],
             'jenis_kelamin' => [
                 'type' => 'VARCHAR',
-                'constraint' => 64
-            ],
-            'kelas' => [
-                'type' => 'VARCHAR',
-                'constraint' => 64
+                'constraint' => 64,
+                'null' => true
             ],
             'rt' => [
                 'type' => 'VARCHAR',
-                'constraint' => 128
+                'constraint' => 128,
+                'null' => true
             ],
             'rw' => [
                 'type' => 'VARCHAR',
-                'constraint' => 128
+                'constraint' => 128,
+                'null' => true
             ]
         ];
 

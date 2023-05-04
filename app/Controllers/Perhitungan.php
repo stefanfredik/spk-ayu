@@ -26,7 +26,6 @@ class Perhitungan extends BaseController
         $this->pendudukModel = new PendudukModel();
         $this->subkriteriaModel = new SubkriteriaModel();
         $this->pesertaModel = new PesertaModel();
-        $this->kelayakanModel = new KelayakanModel();
 
         $this->jumlahKriteria = $this->kriteriaModel->countAllResults();
     }
@@ -37,15 +36,15 @@ class Perhitungan extends BaseController
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
-        $kelayakan      = $this->kelayakanModel->findAll();
+
 
         helper('Check');
 
-        $check = checkdata($peserta, $kriteria, $subkriteria, $kelayakan);
+        $check = checkdata($peserta, $kriteria, $subkriteria);
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
         // $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
-        $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
+        $moora = new Moora($peserta, $kriteria, $subkriteria);
 
         $data = [
             'title' => 'Data Perhitungan dan Table Moora',
@@ -59,5 +58,15 @@ class Perhitungan extends BaseController
         ];
 
         return view('/perhitungan/index', $data);
+    }
+
+
+    public function vectorS()
+    {
+    }
+
+
+    public function vectorV()
+    {
     }
 }

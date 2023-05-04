@@ -59,12 +59,12 @@ class WapLib
         }
     }
 
-    private function hitungVectorS()
+    private function vectorS()
     {
         foreach ($this->dataAkhir as $key => $da) {
             foreach ($this->dataKriteria as $dk) {
                 if ($dk["type"] == "cost") {
-                    $da["kriteria_nilai"]
+                    pow($da["kriteria_nilai"]["keterangan"],);
                 }
             }
         }
