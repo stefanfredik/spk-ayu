@@ -21,6 +21,8 @@
                                 <th>RW</td>
                                 <th>Nilai</th>
                                 <th>Keputusan</th>
+                                <th>Periode</th>
+                                <th>Tanggal Terima Bantuan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,7 +39,9 @@
                                     <td><?= $ps['rt'] ?></td>
                                     <td><?= $ps['rw']; ?></td>
                                     <td><?= $ps['nilaiAkhir']; ?></td>
-                                    <th><?= @$ps['keputusan']; ?></th>
+                                    <td><span class="badge <?= $ps['status'] == 'Mendapatkan Bantuan' ? 'bg-success' : 'bg-danger'; ?>"><?= $ps['status']; ?></span></td>
+                                    <td><?= @$ps['periode']; ?></td>
+                                    <td><?= @$ps['tanggalTerima']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

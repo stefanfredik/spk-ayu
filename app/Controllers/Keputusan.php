@@ -12,24 +12,21 @@ use App\Models\PesertaModel;
 use App\Models\pendudukModel;
 use App\Models\SubkriteriaModel;
 
-class Keputusan extends BaseController
-{
+class Keputusan extends BaseController {
     var $meta = [
         'url' => 'keputusan',
         'title' => 'Data Keputusan',
         'subtitle' => 'Halaman Keputusan'
     ];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->kriteriaModel = new KriteriaModel();
         $this->subkriteriaModel = new SubkriteriaModel();
         $this->pesertaModel = new PesertaModel();
         $this->kuotaModel = new KuotaModel();
     }
 
-    public function index()
-    {
+    public function index() {
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
@@ -39,8 +36,12 @@ class Keputusan extends BaseController
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
         $wap = new WapLib($peserta, $kriteria, $subkriteria);
+        $wap->sortPeserta();
+        $wap->setRangking();
 
         $dataPeserta = $wap->getAllPeserta();
+
+
         $dataKuota = $this->kuotaModel->findAll();
 
 
@@ -49,6 +50,26 @@ class Keputusan extends BaseController
         # Proses Keputusan
 
         # Hitung Kuota
+
+
+
+        # Hitung Keputusan
+
+
+        // dd($this->statusKeputusan($dataPeserta, $dataKuota));
+
+
+        $data = [
+            'title'         => 'Data Perhitungan dan Table Moora',
+            'url'           => $this->meta['url'],
+            'peserta'       => $this->statusKeputusan($dataPeserta, $dataKuota)
+        ];
+
+        return view('/keputusan/index', $data);
+    }
+
+    private function statusKeputusan($dataPeserta, $dataKuota) {
+        // hitung kuota tahunan
         $kuotaTahun = [];
         foreach ($dataKuota as $row) {
             $tahun = $row['tahun'];
@@ -62,59 +83,29 @@ class Keputusan extends BaseController
         }
 
 
-        # Hitung Keputusan
-        $rank = 1;
-        $jumlahKuotaPeriode = 0;
-
         foreach ($dataPeserta as $key => $ps) {
-            $dataPeserta[$key]['rangking'] = $rank++;
+            $tahun = $ps['tahun'];
+            $rangking = $ps['rangking'];
+            $kuotaPeriode = 0;
 
             foreach ($dataKuota as $ku) {
-                $tahun = $ps['tahun'];
+                if ($tahun == $ku['tahun'] && $rangking <= $kuotaTahun[$tahun]) {
+                    $kuotaPeriode += $ku['jumlah_kuota'];
 
-                if ($tahun == $ku['tahun']) {
-                    $jumlahKuotaPeriode += $ku['jumlah_kuota'];
-
-                    if ($rank <= $kuotaTahun[$tahun]) {
-                        $dataPeserta[$key]['status'] = 'Layak';
-                        if ($rank <= $jumlahKuotaPeriode) {
-                            $dataPeserta[$key]['periode'] = $ku['periode'];
-                        }
-                    } else {
-                        $dataPeserta[$key]['status'] = 'Tidak Layak';
+                    $dataPeserta[$key]['status'] = 'Mendapatkan Bantuan';
+                    if ($rangking <= $kuotaPeriode) {
+                        $dataPeserta[$key]['periode'] = $ku['periode'];
+                        $dataPeserta[$key]['tanggalTerima'] = $ku['tanggal_terima'];
+                        break;
                     }
+                } else {
+                    $dataPeserta[$key]['periode'] = 'Tidak Tersedia';
+                    $dataPeserta[$key]['tanggalTerima'] = 'Tidak Tersedia';
+                    $dataPeserta[$key]['status'] = 'Tidak Mendapatkan Bantuan';
                 }
-                break;
             }
         }
 
-
-
-        // dd($this->statusKeputusan($dataPeserta, $kuotaTahun));
-
-        dd($dataPeserta);
-        $data = [
-            'title'         => 'Data Perhitungan dan Table Moora',
-            'url'           => $this->meta['url'],
-            'peserta'       => $wap->getAllPeserta(),
-        ];
-
-        return view('/keputusan/index', $data);
-    }
-
-    private function statusKeputusan($data, $kuota)
-    {
-        foreach ($data as $key => $row) {
-            $tahun = $row['tahun'];
-            $jumlahKuota = $kuota[$tahun];
-
-            if ($row['nilaiAkhir'] <= $jumlahKuota) {
-                $data[$key]['status_keputusan'] = 'Diterima';
-            } else {
-                $data[$key]['status_keputusan'] = 'Ditolak';
-            }
-        }
-
-        return $data;
+        return $dataPeserta;
     }
 }

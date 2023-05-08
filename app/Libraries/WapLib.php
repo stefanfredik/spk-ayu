@@ -2,14 +2,12 @@
 
 namespace App\Libraries;
 
-class WapLib
-{
+class WapLib {
     private $dataAkhir = [];
     public $bobotKriteria = [];
 
 
-    public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria)
-    {
+    public function __construct(private array $dataPeserta, private array $dataKriteria, private array $dataSubkriteria) {
         $this->setDataInfo();
         $this->hitungBobotKriteria();
         $this->setNilai();
@@ -19,8 +17,7 @@ class WapLib
     }
 
     // Hitung bobot kriteria
-    private function hitungBobotKriteria()
-    {
+    private function hitungBobotKriteria() {
         $totalNilaiKriteria = 0;
 
         foreach ($this->dataKriteria as $dk) {
@@ -33,15 +30,13 @@ class WapLib
     }
 
 
-    private function setDataInfo()
-    {
+    private function setDataInfo() {
         foreach ($this->dataPeserta as $key => $ps) {
             $this->dataAkhir[$key] = $ps;
         }
     }
 
-    private function setNilai()
-    {
+    private function setNilai() {
         foreach ($this->dataPeserta as $key => $ps) {
             foreach ($this->dataKriteria as $dk) {
                 $k = 'k_' . $dk['id'];
@@ -59,8 +54,7 @@ class WapLib
         }
     }
 
-    private function vectorS()
-    {
+    private function vectorS() {
         foreach ($this->dataAkhir as $key => $da) {
             $temp = 1;
 
@@ -77,8 +71,7 @@ class WapLib
     }
 
 
-    private function vectorV()
-    {
+    private function vectorV() {
         $allVectorS =  0;
         foreach ($this->dataAkhir as $da) {
             $allVectorS += $da['vectorS'];
@@ -90,16 +83,21 @@ class WapLib
         }
     }
 
+    public function setRangking() {
+        foreach ($this->dataAkhir as $key => $da) {
+            $this->dataAkhir[$key]['rangking'] = $key + 1;
+            $this->dataAkhir[$key]['periode'] = "";
+        }
+    }
 
-    public function sortPeserta()
-    {
+
+    public function sortPeserta() {
         usort($this->dataAkhir, fn ($a, $b) => $b['vectorV'] <=> $a['vectorV']);
     }
 
 
 
-    public function getAllPeserta()
-    {
+    public function getAllPeserta() {
         return $this->dataAkhir;
     }
 }
