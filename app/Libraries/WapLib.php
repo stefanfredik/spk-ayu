@@ -13,8 +13,8 @@ class WapLib
         $this->setDataInfo();
         $this->hitungBobotKriteria();
         $this->setNilai();
-        $this->normalisasi();
-        $this->hitungNilaiAkhir();
+        $this->vectorS();
+        $this->vectorV();
         // $this->sortPeserta();
     }
 
@@ -62,51 +62,38 @@ class WapLib
     private function vectorS()
     {
         foreach ($this->dataAkhir as $key => $da) {
+            $temp = 1;
+
             foreach ($this->dataKriteria as $dk) {
                 if ($dk["type"] == "cost") {
-                    pow($da["kriteria_nilai"]["keterangan"],);
+                    $temp *= pow($da["kriteria_nilai"][$dk['keterangan']], abs($this->bobotKriteria[$dk['keterangan']]));
+                } else {
+                    $temp *= pow($da["kriteria_nilai"][$dk['keterangan']], ($this->bobotKriteria[$dk['keterangan']]));
                 }
             }
+
+            $this->dataAkhir[$key]['vectorS'] = $temp;
         }
     }
 
-    private function normalisasi()
+
+    private function vectorV()
     {
-        $kriteria = [];
-        // menampung nilai kriteria dari setiap peserta
-        foreach ($this->dataKriteria as $dk) {
-            $kriteria[$dk["keterangan"]] = [];
-
-            foreach ($this->dataAkhir as $key =>  $da) {
-                array_push($kriteria[$dk["keterangan"]], $da["kriteria_nilai"][$dk["keterangan"]]);
-            }
+        $allVectorS =  0;
+        foreach ($this->dataAkhir as $da) {
+            $allVectorS += $da['vectorS'];
         }
 
-        // dd($kriteria);
-        // hitung normalisasi
         foreach ($this->dataAkhir as $key => $da) {
-            foreach ($this->dataKriteria as $dk) {
-                $this->dataAkhir[$key]["normalisasi"][$dk["keterangan"]] = $this->hitungNormalisasi($da["kriteria_nilai"][$dk["keterangan"]], $kriteria[$dk["keterangan"]]);
-            }
+            $this->dataAkhir[$key]['vectorV'] = $da['vectorS'] / $allVectorS;
+            $this->dataAkhir[$key]['nilaiAkhir'] = $da['vectorS'] / $allVectorS;
         }
     }
 
-
-    private function hitungNilaiAkhir()
-    {
-        foreach ($this->dataAkhir as $key => $da) {
-            $temp = 0;
-            foreach ($this->dataKriteria as $i => $dk) {
-                $temp += ($this->bobotKriteria[$dk["keterangan"]]) * $da["normalisasi"][$dk["keterangan"]];
-            }
-
-            $this->dataAkhir[$key]["nilaiAkhir"] =  $temp;
-        }
-    }
 
     public function sortPeserta()
     {
-        usort($this->dataAkhir, fn ($a, $b) => $b['nilaiAkhir'] <=> $a['nilaiAkhir']);
+        usort($this->dataAkhir, fn ($a, $b) => $b['vectorV'] <=> $a['vectorV']);
     }
 
 
@@ -114,22 +101,5 @@ class WapLib
     public function getAllPeserta()
     {
         return $this->dataAkhir;
-    }
-
-
-
-    // helper function
-    private function hitungNormalisasi(float $bobot, array $semuabobot): float
-    {
-        $nilai = 0;
-        if ($bobot == 0) {
-            return 0;
-        }
-
-        foreach ($semuabobot as $arr) {
-            $nilai += pow($arr, 2);
-        }
-
-        return number_format($bobot / sqrt($nilai), 4);
     }
 }

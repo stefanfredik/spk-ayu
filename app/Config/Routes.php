@@ -140,9 +140,21 @@ $routes->group('user', static function ($router) {
 
 
 $routes->group('perhitungan', static function ($router) {
-    $router->get('/', 'Perhitungan::index');
-    $router->get('vectors', 'Perhitungan::vectorS');
-    $router->get('vectorv', 'Perhitungan::vectorV');
+    // $router->get('/', 'Perhitungan::index');
+    $router->get('data', 'Perhitungan::data');
+    $router->get('perhitungan', 'Perhitungan::perhitungan');
+});
+
+$routes->group('kuota', static function ($router) {
+    $router->get("/", 'Kuota::index');
+    $router->get('table', 'Kuota::table');
+    $router->get('tambah', 'Kuota::tambah');
+    $router->get('(:num)', 'Kuota::edit/$1');
+
+    $router->post('/', 'Kuota::store');
+    $router->post("(:num)", "Kuota::update/$1");
+
+    $router->delete("(:num)", "Kuota::delete/$1");
 });
 
 $routes->get("keputusan", 'Keputusan::index');

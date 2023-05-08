@@ -1,25 +1,6 @@
 <?= $this->extend('/temp/index'); ?>
 <?= $this->section("content"); ?>
 
-<div class="row mb-2">
-    <div class="col-lg-12">
-        <div class="card border shadow">
-            <div class="card-header">
-                <h3>Kriteria Kelayakan</h3>
-            </div>
-            <div class="card-body">
-                <?php foreach ($kelayakan as $kl) : ?>
-                    <div class="row">
-                        <div class="col-md-4">
-                            >= <span class="fw-bold mx-2"><?= $kl['nilai']; ?></span><?= $kl['keterangan']; ?>
-                        </div>
-                    </div>
-                    <hr>
-                <?php endforeach; ?>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="row">
     <div class="col">
         <div class="card  shadow">
@@ -38,7 +19,8 @@
                                 <th>Jenis Kelamin</td>
                                 <th>RT</td>
                                 <th>RW</td>
-                                <th>Status Layak</th>
+                                <th>Nilai</th>
+                                <th>Keputusan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,13 +29,15 @@
                             foreach ($peserta as $ps) :
                             ?>
                                 <tr>
-                                    <td class="text-center"><?= $rank++; ?></td>
+                                    <td class="text-center "><span class="badge bg-success rounded-circle p-2"><?= $rank++; ?></span></td>
                                     <td><?= $ps['nik'] ?></td>
+                                    <td><?= $ps['no_kk'] ?></td>
                                     <td><?= $ps['nama_penduduk'] ?></td>
                                     <td><?= $ps['jenis_kelamin'] ?></td>
                                     <td><?= $ps['rt'] ?></td>
                                     <td><?= $ps['rw']; ?></td>
-                                    <th><?= @$ps['status_layak']; ?></th>
+                                    <td><?= $ps['nilaiAkhir']; ?></td>
+                                    <th><?= @$ps['keputusan']; ?></th>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

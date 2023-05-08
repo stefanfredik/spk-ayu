@@ -43,6 +43,12 @@
     </a>
 
     <div class="sidenav-menu-heading">Pengelolahan</div>
+
+    <a class="nav-link <?= url_is('/kuota') ? 'active' : '' ?>" href="/kuota">
+        <div class="nav-link-icon"><i data-feather="percent"></i></div>
+        Data Kuota dan Periode
+    </a>
+
     <a class="nav-link collapsed" href="javascript:void(0);" data-bs-toggle="collapse" data-bs-target="#perhitungan" aria-expanded="false" aria-controls="collapseDashboards">
         <div class="nav-link-icon"><i data-feather="activity"></i></div>
         Perhitungan
@@ -50,8 +56,8 @@
     </a>
     <div class="collapse" id="perhitungan" data-bs-parent="#accordionSidenav">
         <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavPages">
-            <a class="nav-link" href="/perhitungan/vectors">Vector S</a>
-            <a class="nav-link" href="/perhitungan/vectosv">Vector V</a>
+            <a class="nav-link" href="/perhitungan/data">Data</a>
+            <a class="nav-link" href="/perhitungan/perhitungan">Perhitungan</a>
         </nav>
     </div>
 

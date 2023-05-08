@@ -15,6 +15,9 @@ class Peserta extends Migration
             ],
             'id_penduduk' => [
                 'type'  => 'INT',
+            ],
+            'tahun' => [
+                'type'  => 'INT',
             ]
         ];
 

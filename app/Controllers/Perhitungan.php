@@ -3,12 +3,11 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\KelayakanModel;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use App\Models\PendudukModel;
 use App\Models\SubkriteriaModel;
-use App\Libraries\Moora;
+use App\Libraries\WapLib;
 
 class Perhitungan extends BaseController
 {
@@ -31,38 +30,50 @@ class Perhitungan extends BaseController
     }
 
 
-    public function index()
+    public function data()
     {
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
-
 
         helper('Check');
 
         $check = checkdata($peserta, $kriteria, $subkriteria);
         if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
-        // $moora = new Moora($peserta, $kriteria, $subkriteria, $kelayakan);
-        $moora = new Moora($peserta, $kriteria, $subkriteria);
+        $moora = new WapLib($peserta, $kriteria, $subkriteria);
 
         $data = [
             'title' => 'Data Perhitungan dan Table Moora',
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'totalNilaiKriteria' => $this->totalNilaiKriteria,
             'peserta' => $moora->getAllPeserta(),
-            'jumKriteriaBenefit' => $moora->jumKriteriaBenefit,
-            'jumKriteriaCost' => $moora->jumKriteriaCost,
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
             'bobotKriteria' => $moora->bobotKriteria
         ];
 
-        return view('/perhitungan/index', $data);
+        return view('/perhitungan/data', $data);
     }
 
 
-    public function vectorS()
+    public function perhitungan()
     {
+        $kriteria       = $this->kriteriaModel->findAll();
+        $subkriteria    = $this->subkriteriaModel->findAll();
+        $peserta        = $this->pesertaModel->findAllPeserta();
+
+        $wap = new WapLib($peserta, $kriteria, $subkriteria);
+
+        // dd($wap);
+        $data = [
+            'dataKriteria' => $kriteria,
+            'peserta' => $wap->getAllPeserta(),
+            'bobotKriteria' => $wap->bobotKriteria
+        ];
+
+
+
+        return view('perhitungan/vectors', $data);
     }
 
 
