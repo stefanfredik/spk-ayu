@@ -9,7 +9,7 @@
             <div class="card-body text-center">
                 <!-- <img class="img-account-profile rounded-circle mb-2" src="assets/img/illustrations/profiles/profile-1.png" alt="" /> -->
                 <i class="text-primary bi bi-person-circle fa-10x"></i>
-                <div class="small font-italic text-muted mb-4">Nama Lengkap</div>
+                <div class="small font-italic text-muted mb-4"><?= user()->nama_user ?></div>
                 <!-- Profile picture upload button-->
                 <!-- <button class="btn btn-primary" type="button">Upload new image</button> -->
             </div>
