@@ -95,7 +95,7 @@ define('EVENT_PRIORITY_HIGH', 10);
 
 // $config  = config("Config");
 const APP_NAME  = "SPK";
-const APP_DESC   = "Sistem Penduduk Pendukung Keputusan Penerimaan Bantuan Langsung Tunai Desa Pacar Kecamatan Pacar Kabupaten Manggarai Barat Provinsi Nusa Tenggara Timur";
+const APP_DESC   = "Sistem  Pendukung Keputusan Penerimaan Bantuan Langsung Tunai Desa Pacar Kecamatan Pacar Kabupaten Manggarai Barat Provinsi Nusa Tenggara Timur";
 const APP_VER   = "1.0.0";
 const LOGO_IMG = "assets/img/favicon.png";
 const APP_SLUG = "SPK BLT";

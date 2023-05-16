@@ -1,6 +1,6 @@
 <?= $this->extend('temp/index'); ?>
 <?= $this->section("content"); ?>
-
+<a target="__blank" class="btn btn btn-primary my-2" href="/laporan/cetak"><i class="bi bi-printer-fill mx-2"></i>Cetak Laporan</a>
 <div class="row">
     <div class="col">
         <div class="card  shadow">
@@ -36,12 +36,6 @@
         }
     };
 
-    $('#tablePenduduk').DataTable(config)
-    $('#tableBlt').DataTable(config)
-
-
-    function cetakLaporanBlt() {
-        alert("blt");
-    }
+    $('#table').DataTable(config)
 </script>
 <?= $this->endSection(); ?>
