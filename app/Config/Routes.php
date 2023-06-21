@@ -158,7 +158,12 @@ $routes->group('kuota', static function ($router) {
 });
 
 $routes->get("keputusan", 'Keputusan::index');
-$routes->get("laporan", 'Laporan::index');
+
+
+$routes->group("laporan", static function ($router) {
+    $router->get("/", "Laporan::index");
+    $router->get("cetak", "Laporan::cetak");
+});
 
 // coba
 

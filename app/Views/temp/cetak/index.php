@@ -61,9 +61,8 @@
 
             <div style="display: inline-block; text-align: center; margin: 0 80px;">
                 <p style="margin: 0; font-weight: bold;">PEMERINTAH PROVINSI NUSA TENGGARA TIMUR</p>
-                <p style="margin: 0; font-weight: bold;">DINAS PENDIDIKAN DAN KEBUDAYAAN</p>
-                <p style="margin: 0; font-weight: bold;">SMA NEGERI 2 KOMODO</p>
-                <p style="margin: 0; font-size: small;">Jalan Lintas Selatan Desa Nggorang</p>
+                <p style="margin: 0; font-weight: bold;">KABUPATEN MANGGARAI BARAT</p>
+                <p style="margin: 0; font-weight: bold;">DESA PACAR</p>
             </div>
 
             <div style="display: inline-block;">
@@ -73,8 +72,7 @@
         <hr>
 
         <div>
-
-            <p style="text-align: right;"><?php echo "Nggorang, " . date('d-m-Y'); ?></p>
+            <p style="text-align: right;"><?php echo "Desa Pacar, " . date('d-m-Y'); ?></p>
             <h3 class="head"><?= $title; ?></h3>
         </div>
 
@@ -82,16 +80,17 @@
         <?= $this->renderSection("table"); ?>
         <div class="footer">
             <div class="title">
-                Kepala SMAN 2 Komodo
-            </div>
+                <div>
+                    Kepala Desa Pacar
+                </div>
 
-            <div>
-                <p style="font-weight: bold; margin: 0;">(Agustinus Bayuwarta, S. Pd)</p>
-                <p style="margin: 0;">Pembina TK I/IV B</p>
-                <p style="margin: 0;">NIP 19700823 199802 1 0002</p>
+                <div>
+                    <p style="font-weight: bold; margin: 0;">( Yulianus Sarnudin )</p>
+                    <!-- <p style="margin: 0;">Pembi</p> -->
+                    <!-- <p style="margin: 0;"></p> -->
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
